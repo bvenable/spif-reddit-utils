@@ -3,6 +3,6 @@ spif-reddit-utils
 
 my reddit utils
 
-prerequisites:
-[praw](http://praw.readthedocs.org/):
-pip install praw
+prerequisite: [praw](http://praw.readthedocs.org/)
+
+    pip install praw
