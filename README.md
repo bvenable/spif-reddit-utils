@@ -3,7 +3,7 @@ spif-reddit-utils
 
 my reddit utils
 
-prerequisite: [praw](http://praw.readthedocs.org/)
+prerequisites: Python 2.x and [praw](http://praw.readthedocs.org/)
 
     pip install praw
 
