@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+import praw
+import sys
+r = praw.Reddit('spif-reddit-utils')
+if len(sys.argv) < 2:
+	print "specify post ID"
+	exit(1)
+s = r.get_submission(submission_id=sys.argv[1])
+print str(s.score) + ' ' + str(s.author) + ' ' + s.title
+if s.is_self:
+	print s.selftext
+else:
+	print s.url
+print s.permalink
+if len(s.comments) > 0:
+	print
+	flat_comments = praw.helpers.flatten_tree(s.comments)
+	for comment in flat_comments:
+		print comment.id + ' ' + str(comment.score) + ' ' + str(comment.author) + ' ' + comment.body

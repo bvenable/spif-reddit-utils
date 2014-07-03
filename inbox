@@ -1,0 +1,14 @@
+#!/usr/bin/env python
+import praw
+import sys
+import getpass
+r = praw.Reddit('spif-reddit-utils')
+username = raw_input("username [%s]: " % getpass.getuser())
+if not username:
+	username = getpass.getuser()
+password = getpass.getpass()
+r.login(username,password)
+msgs = r.get_inbox(limit=5)
+for msg in msgs:
+	print msg.body
+	print msg.permalink

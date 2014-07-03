@@ -1,0 +1,21 @@
+#!/usr/bin/env python
+import praw
+import sys
+import io
+import getpass
+r = praw.Reddit('spif-reddit-utils')
+username = getpass.getuser()
+password = getpass.getpass()
+r.login(username,password)
+if len(sys.argv) < 3:
+	print "usage: " + sys.argv[0] + " <post ID> <comment text>"
+	exit(1)
+post = r.get_submission(submission_id=sys.argv[1])
+print str(post.score) + ' ' + str(post.author) + ' ' + post.title
+if post.selftext != "":
+	print post.selftext
+else:
+	print post.url
+print "adding comment:"
+print sys.argv[2]
+post.add_comment(sys.argv[2])
